@@ -1,0 +1,159 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #a81919;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.envelope-wrapper {
+    text-align: center;
+    position: relative;
+}
+
+#envelope {
+    width: 600px; /* Cambiado a 600px para hacer más grande el sobre */
+    height: 450px; /* Cambiado a 450px para hacer más grande el sobre */
+    background-color: #f9c5c8;
+    position: relative;
+    margin: 50px auto;
+    perspective: 1000px;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+#envelope.open .front.flap {
+    transform: rotateX(-180deg);
+}
+
+#envelope .front.flap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 50%;
+    background-color: #f9c5c8;
+    transform-origin: top;
+    transform: rotateX(0);
+    transition: transform 0.6s ease-in-out;
+    background-color: #e63946;
+}
+
+#envelope .front.pocket {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 50%;
+    background-color: #f9c5c8;
+}
+
+.letter {
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    right: 10%;
+    bottom: 10%;
+    background-color: rgb(171, 209, 36);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out;
+    font-family: 'Broadway', sans-serif;
+}
+
+
+/* Estilos para los botones "Open" y "Reset" */
+button {
+    font-family: 'Broadway', sans-serif; /* Fuente Broadway */
+    font-size: 18px;
+    background-color: #00BFFF; /* Color celeste */
+    color: white; /* Color del texto blanco */
+    border: none;
+    padding: 10px 20px;
+    margin: 5px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #009ACD; /* Un tono más oscuro de celeste para el hover */
+}
+
+.hearts .heart {
+    background-color: red; /* Corazones rojos */
+}
+#envelope.open .letter {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.words {
+    font-size: 36px;
+    margin: 10px 0;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.6s ease-in-out forwards;
+}
+
+.letter .line1 { animation-delay: 0.3s; }
+.letter .line2 { animation-delay: 0.4s; }
+.letter .line3 { animation-delay: 0.5s; }
+.letter .line4 { animation-delay: 0.6s; }
+
+.hearts {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    gap: 10px;
+}
+
+.heart {
+    width: 30px;
+    height: 30px;
+    background-size: cover;
+    transform: scale(0);
+    animation: popIn 0.6s ease-in-out forwards;
+    background-image: url('https://i.imgur.com/o5zOE5C.png');
+}
+
+.heart.a1, .heart.a2, .heart.a3 { animation-delay: 0.7s; }
+
+.reset {
+    margin-top: 20px;
+}
+
+.reset button {
+    padding: 10px 20px;
+    font-size: 16px;
+    margin: 5px;
+    cursor: pointer;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes popIn {
+    from {
+        transform: scale(0);
+    }
+    to {
+        transform: scale(1);
+    }
+}
